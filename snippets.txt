@@ -1,0 +1,18 @@
+# Extract the Transaction Type for Counting
+def processline(line):
+    fields = line.split(",")
+    returnvalue = ( fields[2] , 1 )
+    yield returnvalue
+
+add  after the process lines
+| 'Count By' >> beam.CombinePerKey(sum)
+     
+
+def processline(line):
+    fields = line.split(",")
+    returnvalue = ( fields[2] , float(fields[5] )
+    yield returnvalue
+
+add  after the process lines
+| 'Totals' >> beam.CombinePerKey(sum)
+    
